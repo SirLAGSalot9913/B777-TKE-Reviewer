@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>B777 TKE Reviewer</title>
+  <title>B777 Reviewer</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     /* --- Base Styles --- */
@@ -11,9 +11,9 @@
     header { background: #002c5f; text-align: center; padding: 1rem; color: #fff; }
     .container { padding: 1rem 2rem; max-width: 900px; margin: 2rem auto 0; }
     .card {
-      position: relative; background: #fff; padding: 1.5rem; margin-bottom: 1.5rem;
+      background: #fff; padding: 1.5rem; margin-bottom: 1.5rem;
       border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: flex; flex-direction: column; align-items: center; text-align: center;
+      text-align: center;
     }
     .mode-btns { display: flex; gap: 1rem; justify-content: center; margin-top: .5rem; }
     button, select, input[type=number] {
@@ -39,10 +39,7 @@
     h3.section-header { margin-top: 2rem; color: #002c5f; text-align: left; }
 
     /* Center Practice Settings */
-    #settingsPanel .card {
-      max-width: 600px;
-      margin: 2rem auto;
-    }
+    #settingsPanel .card { max-width: 600px; margin: 2rem auto; }
 
     /* --- Responsive --- */
     @media (max-width:1000px) {
@@ -65,7 +62,7 @@
       transition: background .18s; display: none;
     }
     #homeBtn { left: 1rem; }
-    #resetBtn{ right: 1rem; }
+    #resetBtn { right: 1rem; }
 
     /* --- Status Overlay --- */
     #statusOverlay {
@@ -75,7 +72,7 @@
       font-size: .95rem; z-index: 2000; pointer-events: none; display: none;
     }
 
-    /* --- Question Map Overlay & Toggle --- */
+    /* --- Question Map & Toggle --- */
     #navToggleBtn {
       position: fixed; left: 1rem; top: 4rem;
       background: #e4002b; color: #fff; border: none;
@@ -88,7 +85,7 @@
       position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
       background: rgba(255,255,255,0.95); padding: 1rem; border-radius: 8px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 2000;
-      display: grid; grid-template-columns: repeat(10, 1fr); grid-gap: 6px;
+      display: grid; grid-template-columns: repeat(10,1fr); gap:6px;
       max-width: 90vw; max-height: 80vh; overflow: auto;
     }
     #navMap.hidden { display: none !important; }
@@ -99,35 +96,31 @@
       font-size: .75rem; cursor: pointer; flex-shrink: 0;
     }
     .nav-btn.answered { background: #aaa; color: #fff; }
-    .nav-btn.correct { background: #42b72a; color: #fff; }
-    .nav-btn.wrong   { background: #e4002b; color: #fff; }
+    .nav-btn.correct  { background: #42b72a; color: #fff; }
+    .nav-btn.wrong    { background: #e4002b; color: #fff; }
 
     /* --- Disclaimer & Blur --- */
     #blurContent { position: relative; z-index: 1; }
     #disclaimerOverlay {
-      position: fixed; top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.15); display: flex; align-items: center;
-      justify-content: center; z-index: 9999; transition: opacity .45s;
-      pointer-events: auto;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity .45s; pointer-events: auto;
     }
     #disclaimerOverlay.fade-out { opacity: 0; pointer-events: none; }
     #disclaimerOverlay .modal-card {
-      background: #fff; padding: 2.5rem; border-radius: 12px;
-      max-width: 430px; width: 90vw; box-shadow: 0 4px 32px rgba(44,56,90,.13);
-      text-align: center;
+      background: #fff; padding: 2.5rem; border-radius: 12px; max-width: 430px; width: 90vw;
+      box-shadow: 0 4px 32px rgba(44,56,90,.13); text-align: center;
     }
-    #disclaimerOverlay h2 {
-      color: #002c5f; font-size: 2rem; margin-bottom: 1rem;
-    }
+    #disclaimerOverlay h2 { color: #002c5f; font-size: 2rem; margin-bottom: 1rem; }
   </style>
 </head>
 <body>
-  <!-- Disclaimer Overlay -->
+  <!-- DISCLAIMER OVERLAY -->
   <div id="disclaimerOverlay">
     <div class="modal-card">
-      <h2>DISCLAIMER</h2>
+      <h2>Disclaimer</h2>
       <p style="color:#222;font-size:1rem;text-align:justify;">
-        The B777 TKE Reviewer is provided for review purposes only and does not substitute official regulatory materials provided by your company. It is supplied “as is,” without warranty of any kind, and all liability for any damages arising from its use is hereby disclaimed. Use at your own risk.
+        The B777 TKE Reviewer is provided for educational purposes only and does not substitute official regulatory materials. It is supplied “as is,” without warranty of any kind, and all liability for any damages arising from its use is hereby disclaimed. Use at your own risk.
       </p>
       <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;">
         <button id="agreeBtn" style="background:#002c5f;">Agree</button>
@@ -137,21 +130,18 @@
   </div>
 
   <div id="blurContent">
-    <!-- Overlays -->
     <div id="statusOverlay"></div>
     <button id="navToggleBtn">Show Question Map</button>
     <button id="homeBtn">Home</button>
     <button id="resetBtn">Reset</button>
 
-    <!-- Header -->
     <header><h1>B777 TKE Reviewer</h1></header>
 
-    <!-- User Guide -->
     <div id="userGuide" class="container card">
       <h2>How to Use This Reviewer</h2>
       <ol style="text-align:left;max-width:600px;margin:0 auto;">
         <li>Select <b>Exam Mode</b> or <b>Practice Mode</b>.</li>
-        <li>For <b>Practice</b>, choose chapter, number of questions, randomize.</li>
+        <li>For <b>Practice</b>, choose the chapter, number of questions, and randomize.</li>
         <li>For <b>Exam</b>, you have 60 minutes and questions are shuffled.</li>
         <li>Answer each question. In Exam Mode it auto-submits at time-up.</li>
         <li>In Practice Mode you get instant per-question feedback.</li>
@@ -168,11 +158,10 @@
         <span style="font-size:.9rem;color:#333;">tkereviewerhtml@gmail.com</span>
       </div>
       <p style="color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;">
-        Please include a screenshot of the bug/issue encountered in the email.
+        Please include a screenshot of the bug/issue in the email.
       </p>
     </div>
 
-    <!-- Mode Selection -->
     <div id="modeSelection" class="container">
       <div class="card fade-in">
         <h2>Select Mode</h2>
@@ -183,7 +172,6 @@
       </div>
     </div>
 
-    <!-- Exam Settings -->
     <div id="examSettingsPanel" class="container hidden">
       <div class="card fade-in">
         <h2>Exam Settings</h2>
@@ -194,7 +182,6 @@
       </div>
     </div>
 
-    <!-- Practice Settings -->
     <div id="settingsPanel" class="container hidden">
       <div class="card fade-in">
         <h3>Practice Settings</h3>
@@ -206,7 +193,7 @@
         </label>
         <label style="display:flex;align-items:center;gap:.5rem;">
           <input type="checkbox" id="randomizePractice" checked style="width:1.1rem;height:1.1rem;"/>
-          <span style="font-size:.99rem;">Randomize Questions</span>
+          <span>Randomize Questions</span>
         </label>
         <div class="footer-btns">
           <button onclick="beginPractice()">Start Practice</button>
@@ -215,65 +202,58 @@
       </div>
     </div>
 
-    <!-- Quiz Container -->
     <div id="quizContainer" class="container hidden">
       <div id="navMap" class="hidden"></div>
       <div id="questionArea"></div>
       <div id="globalBtns" class="footer-btns">
-        <button onclick="submitAnswers()" id="submitBtn">Submit</button>
-        <button onclick="resetQuiz()" id="retryBtn" class="hidden">Retry</button>
-        <button onclick="switchMode()" id="switchBtn" class="hidden">Switch Mode</button>
+        <button id="submitBtn">Submit</button>
+        <button id="retryBtn" class="hidden" onclick="resetQuiz()">Retry</button>
+        <button id="switchBtn" class="hidden" onclick="switchMode()">Switch Mode</button>
       </div>
       <div id="reviewBtns" class="footer-btns hidden">
-        <button onclick="reviewMistakes()" id="reviewBtn">Review Mistakes</button>
+        <button id="reviewBtn" onclick="reviewMistakes()">Review Mistakes</button>
       </div>
       <div id="scoreArea"></div>
     </div>
 
-    <!-- Footer -->
     <footer style="position:fixed;bottom:.5rem;left:.5rem;font-size:.8rem;color:#555;z-index:1;">
-      2025 M25 | v0.9 | For personal study only
+      2025 M25 | v0.91 | For personal study only
     </footer>
   </div>
 
   <script>
-    // Global error reporter
-    window.onerror = function(msg, src, ln, col, err) {
-      const sub = encodeURIComponent("[ERROR] B777 TKE Reviewer Bug Report"),
-            body = encodeURIComponent(`Error:${msg}\nSource:${src}\nLine:${ln}:${col}\n${err?.stack||""}`);
-      window.location.href = `mailto:tkereviewerhtml@gmail.com?subject=${sub}&body=${body}`;
-    };
-
     // Disclaimer logic
     document.addEventListener('DOMContentLoaded', () => {
-      const blur = document.getElementById('blurContent'),
-            overlay = document.getElementById('disclaimerOverlay'),
-            agree = document.getElementById('agreeBtn'),
-            disagree = document.getElementById('disagreeBtn');
+      const overlay = document.getElementById('disclaimerOverlay'),
+            blur    = document.getElementById('blurContent');
       blur.style.filter = 'blur(10px)';
       blur.style.pointerEvents = 'none';
       document.body.style.overflow = 'hidden';
-      agree.onclick = () => {
+
+      document.getElementById('agreeBtn').onclick = () => {
         overlay.classList.add('fade-out');
         setTimeout(() => {
           overlay.style.display = 'none';
           blur.style.filter = '';
           blur.style.pointerEvents = '';
           document.body.style.overflow = '';
+          showHome(true);
         }, 460);
       };
-      disagree.onclick = () => {
+
+      document.getElementById('disagreeBtn').onclick = () => {
         overlay.classList.add('fade-out');
         setTimeout(() => window.location.href = 'https://www.youtube.com/watch?v=xvFZjo5PgG0', 460);
       };
+
       document.getElementById('copyEmailBtn').onclick = () => {
         navigator.clipboard.writeText('tkereviewerhtml@gmail.com')
-          .then(() => alert('Email address copied'))
-          .catch(() => alert('Copy failed'));
+          .then(()=>alert('Email copied'))
+          .catch(()=>alert('Copy failed'));
       };
     });
 
-    // Question Bank
+    // Question bank
     const questionBank = [
   {
     "section": "Airplane General, Emergency Equipment, Doors, Windows",
@@ -4986,9 +4966,13 @@
     ];
 
     // State & Timer
-    let currentMode = '', currentQuestions = [], missedIndices = [], examTimer = null, examSecondsLeft = 0;
+    let currentMode = '',
+        currentQuestions = [],
+        missedIndices = [],
+        examTimer = null,
+        examSecondsLeft = 0;
 
-    // Utils
+    // Utilities
     function shuffle(arr) {
       for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -4996,21 +4980,37 @@
       }
     }
     function formatTime(s) {
-      const m = String(Math.floor(s/60)).padStart(2,'0'),
-            sec = String(s%60).padStart(2,'0');
+      const m = String(Math.floor(s / 60)).padStart(2, '0'),
+            sec = String(s % 60).padStart(2, '0');
       return `${m}:${sec}`;
     }
 
-    // Update Status & Nav
+    // Build question map
+    function buildNav() {
+      const nav = document.getElementById('navMap');
+      nav.innerHTML = '';
+      currentQuestions.forEach((_, i) => {
+        const b = document.createElement('div');
+        b.className = 'nav-btn';
+        b.textContent = i + 1;
+        b.dataset.index = i;
+        b.onclick = () => document.querySelectorAll('#questionArea .card')[i+1]
+                          .scrollIntoView({ behavior: 'smooth' });
+        nav.appendChild(b);
+      });
+    }
+
+    // Update status overlay & nav
     function updateStatus() {
       const total = currentQuestions.length;
       const answered = new Set(
-        Array.from(document.querySelectorAll('#questionArea input[type=radio]:checked')).map(el => el.name)
+        Array.from(document.querySelectorAll('#questionArea input[type=radio]:checked'))
+             .map(el => el.name)
       ).size;
-      const pct = total ? Math.round(answered/total*100) : 0;
+      const pct = total ? Math.round(answered / total * 100) : 0;
       const so = document.getElementById('statusOverlay');
-      if (currentMode === 'exam') so.style.display = 'block';
-      so.textContent = (currentMode==='exam'? formatTime(examSecondsLeft)+' | ':'') +
+      so.style.display = currentMode === 'exam' ? 'block' : 'none';
+      so.textContent = (currentMode==='exam' ? formatTime(examSecondsLeft)+' | ' : '') +
                        `Answered ${answered}/${total} (${pct}%)`;
       document.querySelectorAll('#navMap .nav-btn').forEach(btn => {
         const idx = +btn.dataset.index;
@@ -5019,7 +5019,7 @@
       });
     }
 
-    // Exam Timer
+    // Exam timer
     function startTimer() {
       examSecondsLeft = 3600;
       if (examTimer) clearInterval(examTimer);
@@ -5035,87 +5035,76 @@
       updateStatus();
     }
 
-    window.onload = () => {
-      const sel = document.getElementById('sectionSelect');
-      [...new Set(questionBank.map(q=>q.section))].forEach(s => {
-        const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o);
-      });
-    };
-
-    function buildNav() {
-      const nav = document.getElementById('navMap');
-      nav.innerHTML = '';
-      currentQuestions.forEach((_, i) => {
-        const btn = document.createElement('div');
-        btn.className = 'nav-btn'; btn.textContent = i+1; btn.dataset.index = i;
-        btn.onclick = () => document.querySelectorAll('#questionArea .card')[i+1].scrollIntoView({behavior:'smooth'});
-        nav.appendChild(btn);
-      });
-    }
-
+    // Show/hide screens
     function hideAll() {
-      document.querySelectorAll('.container').forEach(c=>c.classList.add('hidden'));
-      document.getElementById('statusOverlay').style.display = 'none';
+      document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
     }
-    function showHome(force=false) {
+    function showHome(force = false) {
       if (examTimer) { clearInterval(examTimer); examTimer = null; }
       const ov = document.getElementById('disclaimerOverlay');
       if (!force && ov.style.display !== 'none') return;
       hideAll();
       document.getElementById('userGuide').classList.remove('hidden');
       document.getElementById('modeSelection').classList.remove('hidden');
-      document.getElementById('homeBtn').style.display='none';
-      document.getElementById('resetBtn').style.display='none';
-      document.getElementById('navToggleBtn').style.display='none';
+      document.getElementById('homeBtn').style.display = 'none';
+      document.getElementById('resetBtn').style.display = 'none';
+      document.getElementById('navToggleBtn').style.display = 'none';
       document.getElementById('navMap').classList.add('hidden');
+      document.getElementById('statusOverlay').style.display = 'none';
     }
-    document.getElementById('homeBtn').onclick = ()=>showHome(true);
-    document.getElementById('resetBtn').onclick = ()=>resetQuiz();
+    document.getElementById('homeBtn').onclick = () => showHome(true);
+    document.getElementById('resetBtn').onclick = () => resetQuiz();
 
+    // Mode selection
     function startMode(mode) {
-      currentMode = mode; hideAll();
-      if (mode==='exam') document.getElementById('examSettingsPanel').classList.remove('hidden');
-      else               document.getElementById('settingsPanel').classList.remove('hidden');
-      document.getElementById('homeBtn').style.display='block';
-      document.getElementById('resetBtn').style.display=(mode==='practice'?'block':'none');
+      currentMode = mode;
+      hideAll();
+      if (mode === 'exam') document.getElementById('examSettingsPanel').classList.remove('hidden');
+      else                 document.getElementById('settingsPanel').classList.remove('hidden');
+      document.getElementById('homeBtn').style.display = 'block';
+      document.getElementById('resetBtn').style.display = (mode==='practice' ? 'block' : 'none');
     }
     function cancelSettings() { showHome(true); }
-    function switchMode() { showHome(true); }
+    function switchMode()  { showHome(true); }
 
-    function beginExam() {
-      currentQuestions = questionBank.slice().sort(()=>Math.random()-0.5).slice(0,100);
+    // Begin Exam
+    function beginExam(){
+      currentQuestions = questionBank.slice().sort(() => Math.random() - .5).slice(0,100);
+      missedIndices = [];
       hideAll();
       document.getElementById('quizContainer').classList.remove('hidden');
       document.getElementById('examSettingsPanel').classList.add('hidden');
-      document.getElementById('homeBtn').style.display='block';
-      document.getElementById('resetBtn').style.display='none';
-      document.getElementById('navToggleBtn').style.display='block';
-      document.getElementById('navToggleBtn').textContent='Show Question Map';
+      document.getElementById('homeBtn').style.display = 'block';
+      document.getElementById('navToggleBtn').style.display = 'block';
+      document.getElementById('navToggleBtn').textContent = 'Show Question Map';
       buildNav(); document.getElementById('navMap').classList.add('hidden');
       startTimer();
-      renderQuestions();
+      showQuiz();
     }
 
-    function beginPractice() {
-      const cnt = +document.getElementById('questionCount').value;
-      const chap = document.getElementById('sectionSelect').value;
-      let pool = questionBank.filter(q=>!chap||q.section===chap);
+    // Begin Practice
+    function beginPractice(){
+      const cnt = +document.getElementById('questionCount').value,
+            chap= document.getElementById('sectionSelect').value;
+      let pool = questionBank.filter(q => !chap || q.section === chap);
       if (document.getElementById('randomizePractice').checked) shuffle(pool);
-      currentQuestions = pool.slice(0,cnt);
+      currentQuestions = pool.slice(0, cnt);
+      missedIndices = [];
       hideAll();
       document.getElementById('quizContainer').classList.remove('hidden');
       document.getElementById('settingsPanel').classList.add('hidden');
-      document.getElementById('homeBtn').style.display='block';
-      document.getElementById('resetBtn').style.display='block';
-      document.getElementById('navToggleBtn').style.display='block';
-      document.getElementById('navToggleBtn').textContent='Show Question Map';
+      document.getElementById('homeBtn').style.display = 'block';
+      document.getElementById('resetBtn').style.display = 'block';
+      document.getElementById('navToggleBtn').style.display = 'block';
+      document.getElementById('navToggleBtn').textContent = 'Show Question Map';
       buildNav(); document.getElementById('navMap').classList.add('hidden');
-      renderQuestions();
+      showQuiz();
     }
 
-    document.getElementById('navToggleBtn').onclick = function() {
+    // Toggle map
+    document.getElementById('navToggleBtn').onclick = function(){
       const nav = document.getElementById('navMap');
-      if (nav.classList.contains('hidden')) {
+      if (nav.classList.contains('hidden')){
         nav.classList.remove('hidden');
         this.textContent = 'Hide Question Map';
       } else {
@@ -5124,31 +5113,60 @@
       }
     };
 
-    function renderQuestions() {
+    // Render questions
+    function showQuiz(){
+      hideAll();
+      document.getElementById('quizContainer').classList.remove('hidden');
+      document.getElementById('resetBtn').style.display = (currentMode==='practice'?'block':'none');
+
+      const sb = document.getElementById('submitBtn'),
+            rp = document.getElementById('retryBtn'),
+            sw = document.getElementById('switchBtn'),
+            rv = document.getElementById('reviewBtns'),
+            sa = document.getElementById('scoreArea');
+
+      sa.innerHTML = '';
+      rp.classList.add('hidden');
+      sw.classList.add('hidden');
+      rv.classList.add('hidden');
+
+      if (currentMode === 'exam') {
+        sb.textContent = 'Submit';
+        sb.onclick = submitAnswers;
+      } else {
+        sb.textContent = 'Review Mistakes';
+        sb.onclick = reviewPractice;
+      }
+      sb.style.display = 'inline-block';
+      sb.disabled = false;
+
       const area = document.getElementById('questionArea');
       area.innerHTML = `<div class="card fade-in"><h2>${currentMode==='exam'?'Exam Mode':'Practice Mode'}</h2></div>`;
       let lastSec = '';
-      currentQuestions.forEach((q,i)=>{
-        if (currentMode==='practice' && q.section!==lastSec) {
+      currentQuestions.forEach((q,i) => {
+        if (currentMode==='practice' && q.section !== lastSec) {
           const h = document.createElement('h3');
-          h.className='section-header'; h.textContent=q.section;
-          area.appendChild(h); lastSec=q.section;
+          h.className = 'section-header';
+          h.textContent = q.section;
+          area.appendChild(h);
+          lastSec = q.section;
         }
         const card = document.createElement('div');
-        card.className='card fade-in';
+        card.className = 'card fade-in';
         let html = `<p style="margin-bottom:1.2rem;"><strong>Q${i+1}:</strong> ${q.question}</p>`;
         let opts = q.choices.slice();
         if (currentMode==='exam') shuffle(opts);
-        opts.forEach(o=>{
+        opts.forEach(o => {
           html += `<label><input type="radio" name="q${i}" value="${o.replace(/"/g,'&quot;')}"> ${o}</label>`;
         });
         if (currentMode==='practice') {
           html += `<button id="b${i}" onclick="submitPractice(${i})" disabled>Submit</button><div id="f${i}"></div>`;
         }
-        card.innerHTML = html; area.appendChild(card);
-        card.querySelectorAll(`input[name="q${i}"]`).forEach(r=>{
-          r.onchange = ()=>{
-            if (currentMode==='practice') document.getElementById(`b${i}`).disabled=false;
+        card.innerHTML = html;
+        area.appendChild(card);
+        card.querySelectorAll(`input[name="q${i}"]`).forEach(radio => {
+          radio.onchange = () => {
+            if (currentMode==='practice') document.getElementById(`b${i}`).disabled = false;
             updateStatus();
           };
         });
@@ -5156,63 +5174,94 @@
       updateStatus();
     }
 
-    function submitPractice(i) {
-      const corr = currentQuestions[i].answer.trim();
-      const sel  = document.querySelector(`input[name="q${i}"]:checked`);
-      const val  = sel? sel.value.trim() : '';
-      document.querySelectorAll(`input[name="q${i}"]`).forEach(r=>{
+    // Practice submit
+    function submitPractice(i){
+      const corr = currentQuestions[i].answer.trim(),
+            sel  = document.querySelector(`input[name="q${i}"]:checked`),
+            val  = sel ? sel.value.trim() : '';
+      document.querySelectorAll(`input[name="q${i}"]`).forEach(r => {
         r.disabled = true;
-        const lbl = r.parentElement; lbl.classList.remove('answer-correct','answer-wrong');
-        if (r.value.trim()===corr) lbl.classList.add('answer-correct');
-        if (r.checked && r.value.trim()!==corr) lbl.classList.add('answer-wrong');
+        const lbl = r.parentElement;
+        lbl.classList.remove('answer-correct','answer-wrong');
+        if (r.value.trim() === corr) lbl.classList.add('answer-correct');
+        if (r.checked && r.value.trim() !== corr) lbl.classList.add('answer-wrong');
       });
-      document.getElementById(`f${i}`).innerHTML =
-        val===corr ? `<span class="correct">Correct!</span>` : `<span class="incorrect">Incorrect. Answer: ${corr}</span>`;
+      document.getElementById(`f${i}`).innerHTML = val===corr
+        ? `<span class="correct">Correct!</span>`
+        : `<span class="incorrect">Incorrect. Answer: ${corr}</span>`;
       document.getElementById(`b${i}`).style.display = 'none';
+      if (val !== corr) missedIndices.push(i);
       const navBtn = document.querySelector(`#navMap .nav-btn[data-index="${i}"]`);
       navBtn.classList.remove('answered');
-      navBtn.classList.add(val===corr?'correct':'wrong');
+      navBtn.classList.add(val===corr ? 'correct':'wrong');
+      updateStatus();
     }
 
-    function submitAnswers() {
-      document.getElementById('submitBtn').style.display='none';
-      document.getElementById('statusOverlay').style.display='none';
+    // Review practice
+    function reviewPractice(){
+      if (!missedIndices.length) return;
+      currentQuestions = missedIndices.map(i => currentQuestions[i]);
+      missedIndices = [];
+      showQuiz();
+    }
+
+    // Exam submit
+    function submitAnswers(){
+      document.getElementById('submitBtn').style.display = 'none';
+      document.getElementById('statusOverlay').style.display = 'none';
       if (examTimer) clearInterval(examTimer);
-      let score=0; missedIndices=[];
-      currentQuestions.forEach((q,i)=>{
+      let score = 0;
+      missedIndices = [];
+      currentQuestions.forEach((q,i) => {
         const sel = document.querySelector(`input[name="q${i}"]:checked`);
-        if (sel && sel.value.trim()===q.answer.trim()) score++;
+        if (sel && sel.value.trim() === q.answer.trim()) score++;
         else missedIndices.push(i);
       });
       const pct = ((score/currentQuestions.length)*100).toFixed(1);
       document.getElementById('retryBtn').classList.remove('hidden');
       document.getElementById('switchBtn').classList.remove('hidden');
-      if (currentMode==='exam' && missedIndices.length)
-        document.getElementById('reviewBtns').classList.remove('hidden');
-      document.getElementById('scoreArea').innerHTML =
-        `<div class="card fade-in"><h3>Your Score: ${score}/${currentQuestions.length} (${pct}%)</h3>
-           <h4>${pct>=80?'✔️ Passed':'❌ Failed'} (80% needed)</h4></div>`;
-      document.querySelectorAll('#navMap .nav-btn').forEach(btn=>{
+      if (missedIndices.length) document.getElementById('reviewBtns').classList.remove('hidden');
+      document.getElementById('scoreArea').innerHTML = `
+        <div class="card fade-in">
+          <h3>Your Score: ${score}/${currentQuestions.length} (${pct}%)</h3>
+          <h4>${pct>=80?'✔️ Passed':'❌ Failed'} (80% needed)</h4>
+        </div>`;
+      document.querySelectorAll('#navMap .nav-btn').forEach(btn => {
         const idx = +btn.dataset.index;
         btn.classList.remove('answered');
-        btn.classList.add(missedIndices.includes(idx)?'wrong':'correct');
+        btn.classList.add(missedIndices.includes(idx)? 'wrong':'correct');
       });
-      currentQuestions.forEach((q,i)=>{
+      currentQuestions.forEach((q,i) => {
         const corr = q.answer.trim();
-        document.querySelectorAll(`input[name="q${i}"]`).forEach(r=>{
+        document.querySelectorAll(`input[name="q${i}"]`).forEach(r => {
           r.disabled = true;
-          const lbl = r.parentElement; lbl.classList.remove('answer-correct','answer-wrong');
-          if (r.value.trim()===corr) lbl.classList.add('answer-correct');
-          if (r.checked && r.value.trim()!==corr) lbl.classList.add('answer-wrong');
+          const lbl = r.parentElement;
+          lbl.classList.remove('answer-correct','answer-wrong');
+          if (r.value.trim() === corr) lbl.classList.add('answer-correct');
+          if (r.checked && r.value.trim() !== corr) lbl.classList.add('answer-wrong');
         });
       });
     }
 
-    function reviewMistakes() {
+    // Exam retry
+    function resetQuiz(){
+      showQuiz();
+      document.getElementById('retryBtn').classList.add('hidden');
+      document.getElementById('switchBtn').classList.add('hidden');
+      document.getElementById('reviewBtns').classList.add('hidden');
+      document.getElementById('scoreArea').innerHTML = '';
+      const sb = document.getElementById('submitBtn');
+      sb.style.display = 'inline-block';
+      sb.disabled = false;
+      if (currentMode==='exam') startTimer();
+    }
+
+    // Review mistakes (exam)
+    function reviewMistakes(){
       if (!missedIndices.length) return;
       currentQuestions = missedIndices.map(i => currentQuestions[i]);
-      renderQuestions();
-      // restore submit button for review
+      missedIndices = [];
+      showQuiz();
       const sb = document.getElementById('submitBtn');
       sb.style.display = 'inline-block';
       sb.disabled = false;
@@ -5222,12 +5271,17 @@
       document.getElementById('statusOverlay').style.display = 'none';
     }
 
-    function resetQuiz() {
-      renderQuestions();
-      document.getElementById('retryBtn').classList.add('hidden');
-      document.getElementById('switchBtn').classList.add('hidden');
-      document.getElementById('reviewBtns').classList.add('hidden');
-    }
+    // Initialize on load
+    window.onload = () => {
+      const sel = document.getElementById('sectionSelect');
+      [...new Set(questionBank.map(q => q.section))].forEach(s => {
+        const o = document.createElement('option');
+        o.value = s;
+        o.textContent = s;
+        sel.appendChild(o);
+      });
+      showHome(true);
+    };
   </script>
 </body>
 </html>
