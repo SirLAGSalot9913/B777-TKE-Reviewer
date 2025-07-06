@@ -41,65 +41,58 @@
     /* Center Practice Settings */
     #settingsPanel .card { max-width: 600px; margin: 2rem auto; }
 
-    /* --- Responsive --- */
-    @media (max-width:1000px) {
-      .container { max-width: 99vw; }
-      .card      { width: 99%; }
-    }
+    /* Responsive */
     @media (max-width:600px) {
-      .container { padding: 1rem 0.2rem; }
-      .card      { padding: 1rem 0.5rem; }
       .mode-btns { flex-direction: column; }
+      .container { padding: 1rem 0.5rem; }
+      .card { padding: 1rem; }
     }
 
-    /* --- Fixed Buttons --- */
+    /* Fixed Buttons */
     #homeBtn, #resetBtn {
       position: fixed; top: 1rem; z-index: 1001;
       background: #e4002b; color: #fff; border: none;
-      padding: .55rem 1.4rem; border-radius: 8px;
-      font-weight: 600; font-size: 1rem; cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      padding: .5rem 1rem; border-radius: 6px;
+      font-weight: 600; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.06);
       transition: background .18s; display: none;
     }
-    #homeBtn { left: 1rem; }
-    #resetBtn { right: 1rem; }
+    #homeBtn { left: 1rem; } #resetBtn { right: 1rem; }
 
-    /* --- Status Overlay --- */
+    /* Status Overlay */
     #statusOverlay {
       position: fixed; top: 1rem; right: 1rem;
-      background: #e4002b; color: #fff;
-      padding: .5rem .8rem; border-radius: 6px;
-      font-size: .95rem; z-index: 2000; pointer-events: none; display: none;
+      background: #e4002b; color: #fff; padding: .5rem .8rem;
+      border-radius: 6px; font-size: .95rem; z-index: 2000;
+      pointer-events: none; display: none;
     }
 
-    /* --- Question Map & Toggle --- */
+    /* Question Map */
     #navToggleBtn {
       position: fixed; left: 1rem; top: 4rem;
       background: #e4002b; color: #fff; border: none;
-      padding: .4rem .8rem; border-radius: 6px;
-      font-size: .9rem; cursor: pointer; z-index: 2000; display: none;
-      transition: background .18s;
+      padding: .4rem .8rem; border-radius: 6px; cursor: pointer;
+      z-index: 2000; display: none; transition: background .18s;
     }
     #navToggleBtn:hover { background: #bf0023; }
     #navMap {
-      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
       background: rgba(255,255,255,0.95); padding: 1rem; border-radius: 8px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 2000;
-      display: grid; grid-template-columns: repeat(10,1fr); gap:6px;
+      display: grid; grid-template-columns: repeat(10,1fr); gap: 6px;
       max-width: 90vw; max-height: 80vh; overflow: auto;
     }
     #navMap.hidden { display: none !important; }
     .nav-btn {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: #fff; border: 1px solid #ccc; color: #333;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .75rem; cursor: pointer; flex-shrink: 0;
+      width: 34px; height: 34px; border-radius: 50%; background: #fff;
+      border: 1px solid #ccc; color: #333; display: flex;
+      align-items: center; justify-content: center; font-size: .75rem;
+      cursor: pointer; flex-shrink: 0;
     }
     .nav-btn.answered { background: #aaa; color: #fff; }
     .nav-btn.correct  { background: #42b72a; color: #fff; }
     .nav-btn.wrong    { background: #e4002b; color: #fff; }
 
-    /* --- Disclaimer & Blur --- */
+    /* Disclaimer & Blur */
     #blurContent { position: relative; z-index: 1; }
     #disclaimerOverlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -108,8 +101,9 @@
     }
     #disclaimerOverlay.fade-out { opacity: 0; pointer-events: none; }
     #disclaimerOverlay .modal-card {
-      background: #fff; padding: 2.5rem; border-radius: 12px; max-width: 430px; width: 90vw;
-      box-shadow: 0 4px 32px rgba(44,56,90,.13); text-align: center;
+      background: #fff; padding: 2.5rem; border-radius: 12px;
+      max-width: 430px; width: 90vw; box-shadow: 0 4px 32px rgba(44,56,90,.13);
+      text-align: center;
     }
     #disclaimerOverlay h2 { color: #002c5f; font-size: 2rem; margin-bottom: 1rem; }
   </style>
@@ -120,7 +114,7 @@
     <div class="modal-card">
       <h2>Disclaimer</h2>
       <p style="color:#222;font-size:1rem;text-align:justify;">
-        The B777 Reviewer is provided for educational purposes only and does not substitute official regulatory materials. It is supplied “as is,” without warranty of any kind, and all liability for any damages arising from its use is hereby disclaimed. Use at your own risk.
+        The B777 TKE Reviewer is provided for practice and review purposes only and does not substitute official regulatory materials given by your company. It is supplied “as is,” without warranty of any kind, and all liability for any damages arising from its use is hereby disclaimed. Use at your own risk.
       </p>
       <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;">
         <button id="agreeBtn" style="background:#002c5f;">Agree</button>
@@ -158,7 +152,7 @@
         <span style="font-size:.9rem;color:#333;">tkereviewerhtml@gmail.com</span>
       </div>
       <p style="color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;">
-        Please include a screenshot of the bug/issue in the email.
+        Please include a screenshot of the issue/bug encountered in the email.
       </p>
     </div>
 
@@ -217,7 +211,7 @@
     </div>
 
     <footer style="position:fixed;bottom:.5rem;left:.5rem;font-size:.8rem;color:#555;z-index:1;">
-      2025 M25 | v0.91 | For personal study only
+      2025 M25 | v0.7 | For personal study only
     </footer>
   </div>
 
@@ -5015,7 +5009,9 @@
       document.querySelectorAll('#navMap .nav-btn').forEach(btn => {
         const idx = +btn.dataset.index;
         const chosen = !!document.querySelector(`input[name="q${idx}"]:checked`);
-        btn.classList.toggle('answered', chosen && !btn.classList.contains('correct') && !btn.classList.contains('wrong'));
+        btn.classList.toggle('answered',
+          chosen && !btn.classList.contains('correct') && !btn.classList.contains('wrong')
+        );
       });
     }
 
@@ -5068,7 +5064,7 @@
     function switchMode()  { showHome(true); }
 
     // Begin Exam
-    function beginExam(){
+    function beginExam() {
       currentQuestions = questionBank.slice().sort(() => Math.random() - .5).slice(0,100);
       missedIndices = [];
       hideAll();
@@ -5083,7 +5079,7 @@
     }
 
     // Begin Practice
-    function beginPractice(){
+    function beginPractice() {
       const cnt = +document.getElementById('questionCount').value,
             chap= document.getElementById('sectionSelect').value;
       let pool = questionBank.filter(q => !chap || q.section === chap);
@@ -5102,19 +5098,17 @@
     }
 
     // Toggle map
-    document.getElementById('navToggleBtn').onclick = function(){
+    document.getElementById('navToggleBtn').onclick = function() {
       const nav = document.getElementById('navMap');
-      if (nav.classList.contains('hidden')){
-        nav.classList.remove('hidden');
-        this.textContent = 'Hide Question Map';
+      if (nav.classList.contains('hidden')) {
+        nav.classList.remove('hidden'); this.textContent='Hide Question Map';
       } else {
-        nav.classList.add('hidden');
-        this.textContent = 'Show Question Map';
+        nav.classList.add('hidden'); this.textContent='Show Question Map';
       }
     };
 
-    // Render questions
-    function showQuiz(){
+    // Render questions (choices always shuffled)
+    function showQuiz() {
       hideAll();
       document.getElementById('quizContainer').classList.remove('hidden');
       document.getElementById('resetBtn').style.display = (currentMode==='practice'?'block':'none');
@@ -5125,120 +5119,111 @@
             rv = document.getElementById('reviewBtns'),
             sa = document.getElementById('scoreArea');
 
-      sa.innerHTML = '';
-      rp.classList.add('hidden');
-      sw.classList.add('hidden');
-      rv.classList.add('hidden');
+      sa.innerHTML=''; rp.classList.add('hidden'); sw.classList.add('hidden'); rv.classList.add('hidden');
 
-      if (currentMode === 'exam') {
-        sb.textContent = 'Submit';
-        sb.onclick = submitAnswers;
+      if (currentMode==='exam') {
+        sb.textContent='Submit'; sb.onclick=submitAnswers;
       } else {
-        sb.textContent = 'Review Mistakes';
-        sb.onclick = reviewPractice;
+        sb.textContent='Review Mistakes'; sb.onclick=reviewPractice;
       }
-      sb.style.display = 'inline-block';
-      sb.disabled = false;
+      sb.style.display='inline-block'; sb.disabled=false;
 
       const area = document.getElementById('questionArea');
-      area.innerHTML = `<div class="card fade-in"><h2>${currentMode==='exam'?'Exam Mode':'Practice Mode'}</h2></div>`;
-      let lastSec = '';
+      area.innerHTML=`<div class="card fade-in"><h2>${currentMode==='exam'?'Exam Mode':'Practice Mode'}</h2></div>`;
+      let lastSec='';
+
       currentQuestions.forEach((q,i) => {
-        if (currentMode==='practice' && q.section !== lastSec) {
-          const h = document.createElement('h3');
-          h.className = 'section-header';
-          h.textContent = q.section;
-          area.appendChild(h);
-          lastSec = q.section;
+        if (currentMode==='practice'&&q.section!==lastSec) {
+          const h=document.createElement('h3');
+          h.className='section-header'; h.textContent=q.section;
+          area.appendChild(h); lastSec=q.section;
         }
-        const card = document.createElement('div');
-        card.className = 'card fade-in';
+        const card = document.createElement('div'); card.className='card fade-in';
         let html = `<p style="margin-bottom:1.2rem;"><strong>Q${i+1}:</strong> ${q.question}</p>`;
         let opts = q.choices.slice();
-        if (currentMode==='exam') shuffle(opts);
+        shuffle(opts);  // always shuffle
         opts.forEach(o => {
           html += `<label><input type="radio" name="q${i}" value="${o.replace(/"/g,'&quot;')}"> ${o}</label>`;
         });
         if (currentMode==='practice') {
           html += `<button id="b${i}" onclick="submitPractice(${i})" disabled>Submit</button><div id="f${i}"></div>`;
         }
-        card.innerHTML = html;
-        area.appendChild(card);
+        card.innerHTML=html; area.appendChild(card);
         card.querySelectorAll(`input[name="q${i}"]`).forEach(radio => {
           radio.onchange = () => {
-            if (currentMode==='practice') document.getElementById(`b${i}`).disabled = false;
+            if (currentMode==='practice') document.getElementById(`b${i}`).disabled=false;
             updateStatus();
           };
         });
       });
+
       updateStatus();
     }
 
     // Practice submit
     function submitPractice(i){
-      const corr = currentQuestions[i].answer.trim(),
-            sel  = document.querySelector(`input[name="q${i}"]:checked`),
-            val  = sel ? sel.value.trim() : '';
-      document.querySelectorAll(`input[name="q${i}"]`).forEach(r => {
-        r.disabled = true;
-        const lbl = r.parentElement;
+      const corr=currentQuestions[i].answer.trim(),
+            sel=document.querySelector(`input[name="q${i}"]:checked`),
+            val=sel?sel.value.trim():'';
+      document.querySelectorAll(`input[name="q${i}"]`).forEach(r=>{
+        r.disabled=true;
+        const lbl=r.parentElement;
         lbl.classList.remove('answer-correct','answer-wrong');
-        if (r.value.trim() === corr) lbl.classList.add('answer-correct');
-        if (r.checked && r.value.trim() !== corr) lbl.classList.add('answer-wrong');
+        if(r.value.trim()===corr) lbl.classList.add('answer-correct');
+        if(r.checked&&r.value.trim()!==corr) lbl.classList.add('answer-wrong');
       });
       document.getElementById(`f${i}`).innerHTML = val===corr
         ? `<span class="correct">Correct!</span>`
         : `<span class="incorrect">Incorrect. Answer: ${corr}</span>`;
-      document.getElementById(`b${i}`).style.display = 'none';
-      if (val !== corr) missedIndices.push(i);
-      const navBtn = document.querySelector(`#navMap .nav-btn[data-index="${i}"]`);
+      document.getElementById(`b${i}`).style.display='none';
+      if(val!==corr) missedIndices.push(i);
+      const navBtn=document.querySelector(`#navMap .nav-btn[data-index="${i}"]`);
       navBtn.classList.remove('answered');
-      navBtn.classList.add(val===corr ? 'correct':'wrong');
+      navBtn.classList.add(val===corr?'correct':'wrong');
       updateStatus();
     }
 
-    // Review practice
+    // Review practice mistakes
     function reviewPractice(){
-      if (!missedIndices.length) return;
-      currentQuestions = missedIndices.map(i => currentQuestions[i]);
-      missedIndices = [];
+      if(!missedIndices.length) return;
+      currentQuestions = missedIndices.map(i=>currentQuestions[i]);
+      missedIndices=[];
       showQuiz();
     }
 
     // Exam submit
     function submitAnswers(){
-      document.getElementById('submitBtn').style.display = 'none';
-      document.getElementById('statusOverlay').style.display = 'none';
-      if (examTimer) clearInterval(examTimer);
-      let score = 0;
-      missedIndices = [];
-      currentQuestions.forEach((q,i) => {
-        const sel = document.querySelector(`input[name="q${i}"]:checked`);
-        if (sel && sel.value.trim() === q.answer.trim()) score++;
+      document.getElementById('submitBtn').style.display='none';
+      document.getElementById('statusOverlay').style.display='none';
+      if(examTimer) clearInterval(examTimer);
+      let score=0; missedIndices=[];
+      currentQuestions.forEach((q,i)=>{
+        const sel=document.querySelector(`input[name="q${i}"]:checked`);
+        if(sel&&sel.value.trim()===q.answer.trim()) score++;
         else missedIndices.push(i);
       });
-      const pct = ((score/currentQuestions.length)*100).toFixed(1);
+      const pct=((score/currentQuestions.length)*100).toFixed(1);
       document.getElementById('retryBtn').classList.remove('hidden');
       document.getElementById('switchBtn').classList.remove('hidden');
-      if (missedIndices.length) document.getElementById('reviewBtns').classList.remove('hidden');
-      document.getElementById('scoreArea').innerHTML = `
+      if(missedIndices.length) document.getElementById('reviewBtns').classList.remove('hidden');
+      document.getElementById('scoreArea').innerHTML=`
         <div class="card fade-in">
           <h3>Your Score: ${score}/${currentQuestions.length} (${pct}%)</h3>
           <h4>${pct>=80?'✔️ Passed':'❌ Failed'} (80% needed)</h4>
         </div>`;
-      document.querySelectorAll('#navMap .nav-btn').forEach(btn => {
-        const idx = +btn.dataset.index;
+      document.querySelectorAll('#navMap .nav-btn').forEach(btn=>{
+        const idx=+btn.dataset.index;
         btn.classList.remove('answered');
-        btn.classList.add(missedIndices.includes(idx)? 'wrong':'correct');
+        btn.classList.add(missedIndices.includes(idx)?'wrong':'correct');
       });
-      currentQuestions.forEach((q,i) => {
-        const corr = q.answer.trim();
-        document.querySelectorAll(`input[name="q${i}"]`).forEach(r => {
-          r.disabled = true;
-          const lbl = r.parentElement;
+      currentQuestions.forEach((q,i)=>{
+        const corr=q.answer.trim();
+        document.querySelectorAll(`input[name="q${i}"]`).forEach(r=>{
+          r.disabled=true;
+          const lbl=r.parentElement;
           lbl.classList.remove('answer-correct','answer-wrong');
-          if (r.value.trim() === corr) lbl.classList.add('answer-correct');
-          if (r.checked && r.value.trim() !== corr) lbl.classList.add('answer-wrong');
+          if(r.value.trim()===corr) lbl.classList.add('answer-correct');
+          if(r.checked&&r.value.trim()!==corr) lbl.classList.add('answer-wrong');
         });
       });
     }
@@ -5249,35 +5234,32 @@
       document.getElementById('retryBtn').classList.add('hidden');
       document.getElementById('switchBtn').classList.add('hidden');
       document.getElementById('reviewBtns').classList.add('hidden');
-      document.getElementById('scoreArea').innerHTML = '';
-      const sb = document.getElementById('submitBtn');
-      sb.style.display = 'inline-block';
-      sb.disabled = false;
-      if (currentMode==='exam') startTimer();
+      document.getElementById('scoreArea').innerHTML='';
+      const sb=document.getElementById('submitBtn');
+      sb.style.display='inline-block'; sb.disabled=false;
+      if(currentMode==='exam') startTimer();
     }
 
     // Review mistakes (exam)
     function reviewMistakes(){
-      if (!missedIndices.length) return;
-      currentQuestions = missedIndices.map(i => currentQuestions[i]);
-      missedIndices = [];
+      if(!missedIndices.length) return;
+      currentQuestions = missedIndices.map(i=>currentQuestions[i]);
+      missedIndices=[];
       showQuiz();
-      const sb = document.getElementById('submitBtn');
-      sb.style.display = 'inline-block';
-      sb.disabled = false;
+      const sb=document.getElementById('submitBtn');
+      sb.style.display='inline-block'; sb.disabled=false;
       document.getElementById('retryBtn').classList.add('hidden');
       document.getElementById('switchBtn').classList.add('hidden');
       document.getElementById('reviewBtns').classList.add('hidden');
-      document.getElementById('statusOverlay').style.display = 'none';
+      document.getElementById('statusOverlay').style.display='none';
     }
 
-    // Initialize on load
+    // Initialize
     window.onload = () => {
-      const sel = document.getElementById('sectionSelect');
-      [...new Set(questionBank.map(q => q.section))].forEach(s => {
-        const o = document.createElement('option');
-        o.value = s;
-        o.textContent = s;
+      const sel=document.getElementById('sectionSelect');
+      [...new Set(questionBank.map(q=>q.section))].forEach(s => {
+        const o=document.createElement('option');
+        o.value = s; o.textContent = s;
         sel.appendChild(o);
       });
       showHome(true);
