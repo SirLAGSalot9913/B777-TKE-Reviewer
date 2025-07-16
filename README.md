@@ -1,6 +1,6 @@
 # B777 Type Rating Resources
 
-Your one-stop shop for all B777 Resources. Please be careful when sharing the resources listed below.
+Your one-stop shop for all B777 Resources. 
 
 ## ⚠️ Safety Disclaimer
 
