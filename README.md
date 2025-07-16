@@ -6,6 +6,9 @@ Your one stop shop for all B777 Resources.
 
 ## 📥 External Resources
 
+- **Jet Intro PDF (Annotated)**  
+  [Google Drive Folder ▶️](https://drive.google.com/file/d/1p86E0gytOkZL64jgrexfxv0XaSjAQTAI/view?usp=sharing)
+
 - **B777 Reviewers**  
   [Google Drive Folder ▶️](https://drive.google.com/drive/folders/1Vxexb5iGNe8ufjSCDVNTXsaA8SpkJ32P)
 
