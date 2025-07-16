@@ -1,6 +1,17 @@
 # B777 Type Rating Resources
 
-Your one stop shop for all B777 Resources.
+Your one-stop shop for all B777 Resources. Please be careful when sharing the resources listed below.
+
+## ⚠️ Safety Disclaimer
+
+The materials in this repository are provided **for personal study and practice only** and do **not** replace any official regulatory publications, manuals, or training programs. They are supplied “as is,” without warranty of any kind, and all liability for any damages arising from their use is expressly disclaimed. Use these resources at your own risk.
+
+> **Important:**  
+> - These documents are confidential. Do **not** share them with any airline staff, examiners, instructors, or third parties.  
+> - Be extremely careful when downloading, distributing, or displaying any files from this repo.  
+> - Unauthorized disclosure or use may violate company policies or regulatory requirements.  
+
+By proceeding, you acknowledge and accept full responsibility for how you handle and safeguard these materials. 
 
 ---
 
@@ -18,4 +29,7 @@ Your one stop shop for all B777 Resources.
 - **Practice Technical Knowledge Exam**  
   [Practice Website ▶️](https://sirlagsalot9913.github.io/B777-TKE-Reviewer/)
 
+- **Compiled GDocs Reviewers**  
+  [Google Docs Link ▶️](https://docs.google.com/document/d/1fNLVKQg9SF7NK4YEsP-ZobtWN1S9LH4sQ_RAdWhUGSo/edit?usp=sharing)
+  
 ---
