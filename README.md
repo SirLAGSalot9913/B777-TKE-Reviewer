@@ -6,7 +6,7 @@ Your one stop shop for all B777 Resources.
 
 ## 📥 External Resources
 
-- **Jet Intro PDF (With highlighted suggested keywords)**  
+- **Jet Intro PDF (with highlighted suggested keywords)**  
   [Google Drive Folder ▶️](https://drive.google.com/file/d/1p86E0gytOkZL64jgrexfxv0XaSjAQTAI/view?usp=sharing)
 
 - **B777 Reviewers**  
