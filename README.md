@@ -1,6 +1,6 @@
 # B777 TKE Reviewer
 
-A Philippine-Airlines-themed web app for practicing and taking your Boeing 777 Technical Knowledge Exam (TKE).
+Your one stop shop for all B777 Resources.
 
 ---
 
@@ -11,5 +11,8 @@ A Philippine-Airlines-themed web app for practicing and taking your Boeing 777 T
 
 - **Aviation Materials**  
   [Google Drive Folder ▶️](https://drive.google.com/drive/folders/1oYYbaW6QbshQke3Happ3Iz8KaEb9UON4)
+
+- **Practice Technical Knowledge Exam**
+  [Practice Website ▶️](https://sirlagsalot9913.github.io/B777-TKE-Reviewer/)
 
 ---
