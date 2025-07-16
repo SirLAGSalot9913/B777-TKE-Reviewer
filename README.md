@@ -13,10 +13,3 @@ A Philippine-Airlines-themed web app for practicing and taking your Boeing 777 T
   [Google Drive Folder ▶️](https://drive.google.com/drive/folders/1oYYbaW6QbshQke3Happ3Iz8KaEb9UON4)
 
 ---
-
-## 🚀 Getting Started
-
-1. **Clone this repo**  
-   ```bash
-   git clone https://github.com/<your-username>/TKE-Reviewers.git
-   cd TKE-Reviewers
