@@ -4,7 +4,9 @@ Your one-stop shop for all B777 Resources. Please be careful when sharing the re
 
 ## ⚠️ Safety Disclaimer
 
-The materials in this repository are provided **for personal study and practice only** and do **not** replace any official regulatory publications, manuals, or training programs. They are supplied “as is,” without warranty of any kind, and all liability for any damages arising from their use is expressly disclaimed. Use these resources at your own risk.
+The materials in this repository are provided strictly for personal study and practice and do not replace any official regulatory publications, manuals, or training programs that are provided by your company or the respective manufacturer/s. They are supplied “as is,” without warranty of any kind, and all liability for any damages, direct or indirect, arising from the use or misuse of this repository and resources listed here. Use these resources entirely at your own risk.
+
+Neither the repository’s author, contributors, nor any distributors may be held responsible or liable by any airline staff, examiners, instructors, or other users for any loss, damage, or legal claim resulting from the use of these materials.
 
 > **Important:**  
 > - These documents are confidential. Do **not** share them with any airline staff, examiners, instructors, or third parties.  
