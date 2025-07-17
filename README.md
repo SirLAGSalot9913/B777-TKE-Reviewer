@@ -29,7 +29,7 @@ By proceeding, you acknowledge and accept full responsibility for how you handle
   [Google Drive Folder ▶️](https://drive.google.com/drive/folders/1oYYbaW6QbshQke3Happ3Iz8KaEb9UON4)
 
 - **Practice Technical Knowledge Exam**  
-  [Practice Website ▶️](https://sirlagsalot9913.github.io/B777-TKE-Reviewer/)
+  [Practice Website ▶️](https://sirlagsalot9913.github.io/B777-Type-Rating-Essentials/)
 
 - **Compiled GDocs Reviewers**  
   [Google Docs Link ▶️](https://docs.google.com/document/d/1fNLVKQg9SF7NK4YEsP-ZobtWN1S9LH4sQ_RAdWhUGSo/edit?usp=sharing)
